@@ -1,3 +1,4 @@
+DROP TABLE "Sale Man"
 CREATE TABLE "Sale Man"(
     "sale_person_id" SERIAL NOT NULL,
     "first_name" VARCHAR(50) NOT NULL,
@@ -6,6 +7,7 @@ CREATE TABLE "Sale Man"(
 );
 ALTER TABLE
     "Sale Man" ADD PRIMARY KEY("sale_person_id");
+DROP TABLE "mechanics_cars"
 CREATE TABLE "mechanics_cars"(
     "id" SERIAL NOT NULL,
     "mechanic_id" INTEGER NOT NULL,
@@ -13,17 +15,19 @@ CREATE TABLE "mechanics_cars"(
 );
 ALTER TABLE
     "mechanics_cars" ADD PRIMARY KEY("id");
+DROP TABLE "Cars"
 CREATE TABLE "Cars"(
     "car_id" SERIAL NOT NULL,
     "car_brand" VARCHAR(100) NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
-    "sale_person_id" INTEGER NOT NULL,
+    "sale_person_id" INTEGER NULL,
     "customer_id" INTEGER NOT NULL,
     "model" VARCHAR(50) NOT NULL,
     "year" INTEGER NOT NULL
 );
 ALTER TABLE
     "Cars" ADD PRIMARY KEY("car_id");
+DROP TABLE "Customers"
 CREATE TABLE "Customers"(
     "customer_id" SERIAL NOT NULL,
     "first_name" VARCHAR(50) NOT NULL,
@@ -32,6 +36,7 @@ CREATE TABLE "Customers"(
 );
 ALTER TABLE
     "Customers" ADD PRIMARY KEY("customer_id");
+DROP TABLE "Services"
 CREATE TABLE "Services"(
     "service_id" SERIAL NOT NULL,
     "service_name" VARCHAR(100) NOT NULL,
@@ -43,6 +48,7 @@ CREATE TABLE "Services"(
 );
 ALTER TABLE
     "Services" ADD PRIMARY KEY("service_id");
+DROP TABLE "Mechanics"
 CREATE TABLE "Mechanics"(
     "mechanic_id" SERIAL NOT NULL,
     "first_name" VARCHAR(50) NOT NULL,
@@ -50,13 +56,14 @@ CREATE TABLE "Mechanics"(
 );
 ALTER TABLE
     "Mechanics" ADD PRIMARY KEY("mechanic_id");
+DROP TABLE "Invoices"   
 CREATE TABLE "Invoices"(
     "invoice_id" SERIAL NOT NULL,
     "car_id" INTEGER NOT NULL,
-    "service_id" INTEGER NOT NULL,
+    "service_id" INTEGER NULL,
     "total" DOUBLE PRECISION NOT NULL,
     "payment_date" DATE NOT NULL,
-    "sale_person_id" INTEGER NOT NULL,
+    "sale_person_id" INTEGER NULL,
     "customer_id" INTEGER NOT NULL
 );
 ALTER TABLE
